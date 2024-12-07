@@ -151,7 +151,7 @@ code {
   @include relative-font-size(0.9375);
   border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: #F3FAFF;
 }
 
 code {
@@ -161,11 +161,18 @@ code {
 pre {
   padding: 8px 12px;
   overflow-x: auto;
+  counter-reset: line;
 
   > code {
     border: 0;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 10;
+    padding-left: 10;
+    color: #3B4856;
+    font-family: 'Fira Code', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: block;
+    
   }
 }
 
