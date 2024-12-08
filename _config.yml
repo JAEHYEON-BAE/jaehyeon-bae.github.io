@@ -43,11 +43,7 @@ sass:
 output:
   - _site/assets/css/main.css
 
-markdown: kramdown
-highlighter: rouge
-rouge:
-  line_numbers: true
-  syntax_highlighter: rouge
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

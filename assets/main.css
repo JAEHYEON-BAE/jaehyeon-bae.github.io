@@ -226,6 +226,7 @@ table td {
   border-bottom: 1px solid #e8e8e8;
   position: relative;
   height: 61.94px;
+  background-color: #fff;
   z-index: 1000;
 }
 
@@ -251,67 +252,65 @@ table td {
 .site-nav .menu-icon {
   display: none;
 }
-.site-nav .page-link {
+.site-nav label[for="nav-trigger"] {
+  display: block;
+  float: right;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+.site-nav .menu-icon {
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  background-color: #fdfdfd;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  text-align: right;
+  display: block;
+  float: right;
+  width: 36px;
+  height: 26px;
+  line-height: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+.site-nav .menu-icon > svg {
+  fill: #424242;
+  transition: transform 0.5s ease;
+}
+
+.trigger {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  top: 67.94px;
+  bottom: 241px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  align-items: center;
+  z-index: 999;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+}
+.trigger > .page-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
   color: #111;
   line-height: 1.5;
+  background-color: #fff;
 }
-.site-nav .page-link:not(:last-child) {
-  margin-right: 20px;
-}
-.site-nav .page-link:hover {
+.trigger > .page-link:hover {
   background-color: #2a7ae2;
   color: #fff;
-  transition: background-color 0.5s ease;
-  transition: color 0.3s ease;
-}
-@media screen and (max-width: 600px) {
-  .site-nav {
-    position: absolute;
-    top: 9px;
-    right: 15px;
-    background-color: #fdfdfd;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px;
-    text-align: right;
-  }
-  .site-nav label[for="nav-trigger"] {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 36px;
-    z-index: 2;
-    cursor: pointer;
-  }
-  .site-nav .menu-icon {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 26px;
-    line-height: 0;
-    padding-top: 10px;
-    text-align: center;
-  }
-  .site-nav .menu-icon > svg {
-    fill: #424242;
-    transition: transform 0.5s ease;
-  }
-  .site-nav .trigger {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 61.94px;
-    bottom: 280.5px;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-  .site-nav .trigger > .page-link {
-    position: fixed;
-    left: 0;
-  }
-  .site-nav .nav-trigger:checked ~ label .menu-icon > svg {
-    transform: rotate(90deg);
-  }
+  transition: color 0.5s ease;
+  transition: background 0.5s ease;
 }
 
 /**
@@ -320,7 +319,7 @@ table td {
 .site-footer {
   border-top: 1px solid #e8e8e8;
   padding: 30px 0;
-  height: 280.5px;
+  max-height: 180px;
 }
 
 .footer-heading {
@@ -486,7 +485,6 @@ table td {
 }
 .highlight .cp {
   color: #0070B2;
-  font-weight: bold;
 }
 .highlight .cpf {
   color: #C35355;

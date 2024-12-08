@@ -9,6 +9,7 @@
   // Positioning context for the mobile navigation icon
   position: relative;
   height: $header-height;
+  background-color: #fff;
   z-index: 1000;
 }
 
@@ -38,23 +39,15 @@
     display: none;
   }
 
-  .page-link {
-    color: $text-color;
-    line-height: $base-line-height;
-
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-    &:hover {
-      background-color: $brand-color;
-      color: #fff;
-      transition: background-color 0.5s ease;
-      transition: color 0.5s ease;
-    }
+  label[for="nav-trigger"] {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
   }
 
-  @include media-query($on-palm) {
+  .menu-icon {
     position: absolute;
     top: 9px;
     right: $spacing-unit * 0.5;
@@ -62,107 +55,59 @@
     border: 1px solid $grey-color-light;
     border-radius: 5px;
     text-align: right;
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
 
-    label[for="nav-trigger"] {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 36px;
-      z-index: 2;
-      cursor: pointer;
-    }
-
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding-top: 10px;
-      text-align: center;
-
-      > svg {
-        fill: $grey-color-dark;
-        transition: transform 0.5s ease;
-      }
+    > svg {
+      fill: $grey-color-dark;
+      transition: transform 0.5s ease;
     }
     
-    .trigger {
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: $header-height;
-      bottom: $footer-height;
-      left: 0;
-      right: 0;
-      width: 100%;
-      > .page-link {
-        position: fixed;
-        left: 0;
-      }
-    }
-    // 여기서부터 해보자 ! 천천히 !
-
-    .nav-trigger:checked ~ label .menu-icon > svg {
-      transform: rotate(90deg); 
-    }
-
-
-    // .trigger {
-    //   display: flex;
-    //   position: fixed;
-    //   top: $header-height; 
-    //   bottom: $footer-height;
-    //   left: 0;
-    //   right: 0;
-    //   width: 100%;
-    //   padding: 20px;
-    //   background-color: $background-color;
-    //   z-index: 3;
-
-    //   transform: translateY(-100%);
-    //   transition: transform 0.4s ease;
-    // }
-
-    // input ~ .trigger {
-    //   clear: both;
-    //   display: none;
-    // }
-
-    // input:checked ~ .trigger {
-    //   display: flex;
-    //   flex-direction: center;
-    //   align-items: center;
-    //   justify-content: center;
-    // }
-
-    // .trigger .page-link {
-    //   font-size: 1.5rem; /* 큰 글씨 크기 */
-    //   margin: 15px 0; /* 항목 간 간격 */
-    //   color: $text-color; /* 텍스트 색상 */
-    //   text-decoration: none; /* 밑줄 제거 */
-    //   transition: color 0.3s ease; /* 호버 시 부드러운 색상 변화 */
-    // }
-
-    // .trigger .page-link:hover {
-    //   /* 리스트 항목에 마우스를 올렸을 때 */
-    //   background-color: $brand-color; /* 배경색 변경 */
-    //   color: #fff; /* 텍스트 색상 변경 */
-    //   border-color: #007bff; /* 외곽선 색상 변경 */
-    // }
-
-    // .page-link {
-    //   display: block;
-    //   margin-left: 20px;
-    //   padding: 5px 10px;
-
-    //   &:not(:last-child) {
-    //     margin-right: 0;
-    //   }
-    // }
   }
 }
 
+.trigger {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: fixed;
+  top: $header-height + 6px;
+  bottom: $footer-height + $spacing-unit*2 + 1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  align-items: center;
+
+  z-index: 999;
+
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+
+  > .page-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    color: $text-color;
+    line-height: $base-line-height;
+    background-color: #fff;
+
+    &:hover {
+      background-color: $brand-color;
+      color: #fff;
+      transition: color 0.5s ease;
+      transition: background 0.5s ease;
+    }
+  }
+}
 
 
 /**
@@ -171,7 +116,7 @@
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
-  height: $footer-height;
+  max-height: $footer-height;
 }
 
 .footer-heading {
