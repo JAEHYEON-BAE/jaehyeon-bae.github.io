@@ -283,7 +283,7 @@ table td {
 .trigger {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  position: fixed;
+  position: absolute;
   top: 67.94px;
   bottom: 241px;
   left: 0;

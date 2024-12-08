@@ -74,7 +74,7 @@
 .trigger {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  position: fixed;
+  position: absolute;
   top: $header-height + 6px;
   bottom: $footer-height + $spacing-unit*2 + 1px;
   left: 0;
