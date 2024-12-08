@@ -312,6 +312,7 @@ table td {
   color: #fff;
   transition: color 0.5s ease;
   transition: background 0.5s ease;
+  text-decoration-line: none;
 }
 
 /**
@@ -458,6 +459,10 @@ table td {
   .post-content h4 {
     font-size: 18px;
   }
+}
+
+.home {
+  overflow: hidden;
 }
 
 /**
