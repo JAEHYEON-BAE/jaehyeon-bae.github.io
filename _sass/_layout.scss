@@ -27,9 +27,19 @@
   }
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  height: 100%;
 
   .nav-trigger {
       display: none;
@@ -39,35 +49,59 @@
     display: none;
   }
 
-  label[for="nav-trigger"] {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
+  
+  @include media-query($on-laptop) {
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .nav-bar-page-link {
+      color: $text-color;
+      line-height: $base-line-height;
+      text-align: center;
+
+      // Gaps between nav items, but not on the last one
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
   }
 
-  .menu-icon {
-    position: absolute;
-    top: 9px;
-    right: $spacing-unit * 0.5;
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
-    text-align: right;
-    display: block;
-    float: right;
-    width: 36px;
-    height: 26px;
-    line-height: 0;
-    padding-top: 10px;
-    text-align: center;
-
-    > svg {
-      fill: $grey-color-dark;
-      transition: transform 0.5s ease;
+  @include media-query($on-palm) {
+    .nav-bar {
+      display: none;
     }
-    
+
+    label[for="nav-trigger"] {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+  
+    .menu-icon {
+      position: absolute;
+      top: 9px;
+      right: $spacing-unit * 0.5;
+      background-color: $background-color;
+      border: 1px solid $grey-color-light;
+      border-radius: 5px;
+      text-align: right;
+      display: block;
+      float: right;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      padding-top: 10px;
+      text-align: center;
+  
+      > svg {
+        fill: $grey-color-dark;
+        transition: transform 0.5s ease;
+      }
+    }
   }
 }
 
@@ -109,6 +143,7 @@
     }
   }
 }
+  
 
 
 /**
@@ -180,6 +215,43 @@
   }
 }
 
+/**
+ * Home Page
+ */
+.home {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.home img {
+  width: 100vw;
+  height: calc(100vw / 2.39);
+  object-fit: cover;
+  object-position: center center;
+}
+.image-slider {
+  top: $header-height + 6px;
+  position: relative;
+  width: 100%;
+  height: 50vh; /* 화면 높이에 맞게 */
+  overflow: hidden; /* 화면을 넘는 이미지는 숨김 */
+}
+
+.image-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: calc(100vw / 2.39);
+  object-fit: cover; /* 이미지 비율을 유지하며 크기 조정 */
+  object-position: center center;
+  opacity: 0; /* 처음에는 모두 보이지 않도록 설정 */
+  transition: opacity 1s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+.image-slider .active {
+  opacity: 1; /* 현재 활성화된 이미지만 보이도록 설정 */
+}
 
 
 /**

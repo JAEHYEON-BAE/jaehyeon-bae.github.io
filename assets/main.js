@@ -1,3 +1,27 @@
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.location.pathname === "/") {
+    const slides = document.querySelectorAll('.image-slider .slide');
+    let currentSlide = 0;
+  
+    // 첫 번째 이미지를 보이게 설정
+    slides[currentSlide].classList.add('active');
+  
+    // 슬라이드 전환 함수
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active'); // 현재 이미지를 숨김
+  
+      // 다음 이미지로 이동
+      currentSlide = (currentSlide + 1) % slides.length;
+  
+      slides[currentSlide].classList.add('active'); // 다음 이미지를 보이게 설정
+    }
+  
+    // 3초마다 nextSlide 함수를 실행
+    setInterval(nextSlide, 3000);
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const navTrigger = document.getElementById('nav-trigger');
   const trigger = document.querySelector('.trigger');
