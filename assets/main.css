@@ -224,11 +224,12 @@ table td {
  */
 .site-header {
   border-top: 5px solid #424242;
-  border-bottom: 1px solid #e8e8e8;
   position: relative;
   height: 61.94px;
   background-color: #fff;
   z-index: 1000;
+  display: flex;
+  align-items: center;
 }
 
 .site-title {
@@ -253,7 +254,6 @@ table td {
   line-height: 54px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   height: 100%;
 }
 .site-nav .nav-trigger {
@@ -262,20 +262,23 @@ table td {
 .site-nav .menu-icon {
   display: none;
 }
-@media screen and (max-width: 800px) {
-  .site-nav .nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .site-nav .nav-bar-page-link {
-    color: #111;
-    line-height: 1.5;
-    text-align: center;
-  }
-  .site-nav .nav-bar-page-link:not(:last-child) {
-    margin-right: 20px;
-  }
+.site-nav .nav-bar {
+  display: flex;
+  align-items: center;
+}
+.site-nav .nav-bar-page-link {
+  color: #828282;
+  line-height: 1.5;
+  text-align: center;
+  transition: color 0.5s ease;
+  font-size: 16px;
+}
+.site-nav .nav-bar-page-link:not(:last-child) {
+  margin-right: 5vw;
+}
+.site-nav .nav-bar-page-link:hover {
+  color: #111;
+  text-decoration-line: none;
 }
 @media screen and (max-width: 600px) {
   .site-nav .nav-bar {
@@ -314,7 +317,7 @@ table td {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: absolute;
-  top: 67.94px;
+  top: 66.94px;
   bottom: 241px;
   left: 0;
   right: 0;

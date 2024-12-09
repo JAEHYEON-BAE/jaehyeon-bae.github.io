@@ -3,8 +3,7 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ "HOME" | escape }}</a>
-
+    {%- assign page_paths = "/" | concat: page_paths -%}
     {%- if page_paths -%}
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -17,6 +16,9 @@
         </label>
         <div class="nav-bar">
           {%- for path in page_paths -%}
+          {%- if path == "/" -%}
+          <a class="nav-bar-page-link" href="{{ "/" | relative_url }}">{{ "Home" }}
+          {%- endif -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
             <a class="nav-bar-page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
@@ -30,8 +32,8 @@
 <div class="trigger">
   {%- for path in page_paths -%}
     {%- assign my_page = site.pages | where: "path", path | first -%}
-    {%- if my_page.title -%}
-    <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+    {%- if my_page.title or path == "/" -%}
+    <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | default: "Home" | escape }}</a>
     {%- endif -%}
   {%- endfor -%}
 </div>

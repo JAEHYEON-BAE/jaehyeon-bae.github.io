@@ -3,7 +3,7 @@
  */
 .site-header {
   border-top: 5px solid $grey-color-dark;
-  border-bottom: 1px solid $grey-color-light;
+  // border-bottom: 1px solid $grey-color-light;
   // min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
@@ -11,6 +11,8 @@
   height: $header-height;
   background-color: #fff;
   z-index: 1000;
+  display: flex;
+  align-items: center;
 }
 
 .site-title {
@@ -37,8 +39,6 @@
   line-height: $base-line-height * $base-font-size * 2.25;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-
   height: 100%;
 
   .nav-trigger {
@@ -48,23 +48,25 @@
   .menu-icon {
     display: none;
   }
-
   
-  @include media-query($on-laptop) {
-    .nav-bar {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-    .nav-bar-page-link {
-      color: $text-color;
-      line-height: $base-line-height;
-      text-align: center;
+  .nav-bar {
+    display: flex;
+    align-items: center;
+  }
+  .nav-bar-page-link {
+    color: $grey-color;
+    line-height: $base-line-height;
+    text-align: center;
+    transition: color 0.5s ease;
+    font-size: $base-font-size;
 
-      // Gaps between nav items, but not on the last one
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 5vw;
+    }
+    &:hover {
+      color: $text-color;
+      text-decoration-line: none;
     }
   }
 
@@ -109,7 +111,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: absolute;
-  top: $header-height + 6px;
+  top: $header-height + 5px;
   bottom: $footer-height + $spacing-unit*2 + 1px;
   left: 0;
   right: 0;
