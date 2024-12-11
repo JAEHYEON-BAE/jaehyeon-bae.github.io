@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Cleaning Jekyll..."
+jekyll clean
+
 echo "Compiling Sass..."
 sass _sass/main.scss assets/main.css --style expanded
 

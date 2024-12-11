@@ -1,18 +1,15 @@
 ---
 layout: default
 ---
-
+<script src="{{ '/assets/js/home.js' | relative_url }}"></script>
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
   <div class="image-slider">
     <img src="/assets/images/BINI.JPG" alt="BINI" class="slide">
     <img src="/assets/images/DISNEY_SEA.JPEG" alt="DISNEY_SEA" class="slide">  
-    <img src="/assets/images/EIFFEL_BRIDGE.JPEG" alt="EIFFEL_BRIDGE" class="slide">
+    <img src="/assets/images/EIFFEL_BRIDGE.JPEG" alt="EIFFEL_BRIDGE" class="slide">    
   </div>
 
-
+  {{ content }}
   <!-- {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "POSTS" }}</h2>
     <ul class="post-list">

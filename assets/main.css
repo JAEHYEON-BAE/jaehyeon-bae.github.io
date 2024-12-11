@@ -302,6 +302,11 @@ table td {
     transition: transform 0.5s ease;
   }
 }
+@media screen and (max-width: 600px) and (min-width: 600.1px) {
+  .site-nav .menu-icon > svg {
+    transition: none;
+  }
+}
 
 .trigger {
   display: grid;
@@ -316,6 +321,11 @@ table td {
   z-index: 999;
   transform: translateY(-100%);
   transition: transform 0.5s ease;
+}
+@media (min-width: 600.1px) {
+  .trigger {
+    transition: none;
+  }
 }
 .trigger > .page-link {
   width: 100%;

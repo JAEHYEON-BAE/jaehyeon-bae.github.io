@@ -30,7 +30,6 @@
 }
 
 
-
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
@@ -68,7 +67,6 @@
       display: none;
     }
     
-  
     .menu-icon {
       position: absolute;
       top: 9px;
@@ -89,11 +87,13 @@
       > svg {
         fill: $grey-color-dark;
         transition: transform 0.5s ease;
+        @media (min-width: 600.1px) {
+          transition: none;
+        }
       }
     }
   }
 }
-
 .trigger {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -109,6 +109,9 @@
 
   transform: translateY(-100%);
   transition: transform 0.5s ease;
+  @media (min-width: 600.1px) {
+    transition: none;
+  }
 
   > .page-link {
     width: 100%;
@@ -133,8 +136,6 @@
   }
 }
   
-
-
 /**
  * Site footer
  */
