@@ -255,9 +255,6 @@ table td {
   align-items: center;
   height: 100%;
 }
-.site-nav .nav-trigger {
-  display: none;
-}
 .site-nav .menu-icon {
   display: none;
 }

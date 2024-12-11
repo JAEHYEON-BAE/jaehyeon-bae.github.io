@@ -23,12 +23,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const navTrigger = document.getElementById('nav-trigger');
+  const menuIcon = document.getElementById('menu-icon');
   const trigger = document.querySelector('.trigger');
   const menu_icon_svg = document.querySelector('.menu-icon > svg');
 
-  navTrigger.addEventListener('click', function() {
-    if (navTrigger.checked) {
+  let checked = false;
+  menuIcon.addEventListener('click', function() {
+    console.log("clicked");
+    if (checked === true) {
+      checked = false;
+    } else {
+      checked = true;
+    }
+    if (checked) {
       trigger.style.transform = 'translateY(0)';
       menu_icon_svg.style.transform = 'rotate(270deg)';
     } else {

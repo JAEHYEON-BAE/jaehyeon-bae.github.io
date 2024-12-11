@@ -38,10 +38,6 @@
   align-items: center;
   height: 100%;
 
-  .nav-trigger {
-      display: none;
-  }
-
   .menu-icon {
     display: none;
   }
@@ -71,14 +67,7 @@
     .nav-bar {
       display: none;
     }
-
-    // label[for="nav-trigger"] {
-    //   display: block;
-    //   float: right;
-    //   width: 36px;
-    //   height: 36px;
-    //   cursor: pointer;
-    // }
+    
   
     .menu-icon {
       position: absolute;
