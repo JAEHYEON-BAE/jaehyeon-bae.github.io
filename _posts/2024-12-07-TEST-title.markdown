@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "TEST_title"
+title: "TEST title"
 date: 2024-12-07 10:28:00 +0900
-categories: jekyll update
+categories: jekyll
 ---
 
 This is test page. Hello!
