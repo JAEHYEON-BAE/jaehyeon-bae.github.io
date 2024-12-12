@@ -311,15 +311,15 @@ table td {
 .trigger {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  position: absolute;
+  position: fixed;
   top: 66.94px;
-  bottom: 241px;
-  left: 0;
+  bottom: 0;
+  left: 20vw;
   right: 0;
-  width: 100%;
+  width: 80%;
   align-items: center;
   z-index: 999;
-  transform: translateY(-100%);
+  transform: translateX(100%);
   transition: transform 0.5s ease;
 }
 @media (min-width: 600.1px) {

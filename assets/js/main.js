@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
       checked = true;
     }
     if (checked) {
-      trigger.style.transform = 'translateY(0)';
+      trigger.style.transform = 'translateX(0)';
       menu_icon_svg.style.transform = 'rotate(270deg)';
     } else {
-      trigger.style.transform = 'translateY(-100%)';
+      trigger.style.transform = 'translateX(100%)';
       menu_icon_svg.style.transform = 'rotate(0deg)';
     }
   });
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const onPalm = 600;
   function triggerOnPalm() {
     if (checked && window.innerWidth > onPalm) {
-      trigger.style.transform = 'translateY(-100%)';
+      trigger.style.transform = 'translateX(100%)';
       menu_icon_svg.style.transform = 'rotate(0deg)';
       checked = false;
     }
