@@ -19,7 +19,7 @@
   }
 }
 
-.site-title {
+.page-title {
   @include relative-font-size(1.625);
   display: none;
   font-weight: 300;
@@ -68,6 +68,9 @@
   }
 
   @include media-query($on-palm) {
+    .page-title {
+      display: flex;
+    }
     .nav-bar {
       display: none;
     }

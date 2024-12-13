@@ -238,7 +238,7 @@ table td {
   align-items: center;
 }
 
-.site-title {
+.page-title {
   font-size: 26px;
   display: none;
   font-weight: 300;
@@ -247,7 +247,7 @@ table td {
   margin-bottom: 0;
   float: left;
 }
-.site-title, .site-title:visited {
+.page-title, .page-title:visited {
   color: #424242;
 }
 
@@ -280,6 +280,9 @@ table td {
   text-decoration-line: none;
 }
 @media screen and (max-width: 600px) {
+  .site-nav .page-title {
+    display: flex;
+  }
   .site-nav .nav-bar {
     display: none;
   }

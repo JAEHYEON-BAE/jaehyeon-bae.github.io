@@ -7,6 +7,7 @@
     {%- assign page_paths = "/" | concat: page_paths -%}
     {%- if page_paths -%}
       <nav class="site-nav">
+        <div class="page-title">{{ page.title }}</div>
 
         <span type="checkbox" id="menu-icon" class="menu-icon">
           <svg viewBox="0 -0.5 25 25" width="18px" height="18px">
