@@ -2,11 +2,15 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid $grey-color-dark;
-  position: relative;
+  // border-top: 5px solid $grey-color-dark;
+  // position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: $header-height;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 999;
   display: flex;
   align-items: center;
   > .wrapper {
@@ -17,6 +21,7 @@
 
 .site-title {
   @include relative-font-size(1.625);
+  display: none;
   font-weight: 300;
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
@@ -71,46 +76,66 @@
       position: absolute;
       top: 9px;
       right: $spacing-unit * 0.5;
-      background-color: $background-color;
-      border: 1px solid $grey-color-light;
-      border-radius: 5px;
-      text-align: right;
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
+      background-color: transparent;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      width: 27px;
+      height: 27px;
       line-height: 0;
-      padding-top: 10px;
+      margin-top: 10px;
       text-align: center;
       cursor:  pointer;
-  
+
       > svg {
         fill: $grey-color-dark;
-        transition: transform 0.5s ease;
-        @media (min-width: 600.1px) {
-          transition: none;
-        }
+        width: 100%;
+        height: 100%;
       }
     }
   }
 }
 .trigger {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   position: fixed;
-  top: $header-height + 5px;
+  top: 0;
   bottom: 0;
   left: 20vw;
   right: 0;
   width: 80%;
   align-items: center;
 
-  z-index: 999;
+  z-index: 1000;
 
   transform: translateX(100%);
-  transition: transform 0.5s ease;
+  transition: transform 0.1s ease;
   @media (min-width: 600.1px) {
     transition: none;
+  }
+  > .close-icon {
+    position: absolute;
+    top: 9px;
+    right: $spacing-unit * 0.5;
+    background-color: transparent;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 27px;
+    height: 27px;
+    line-height: 0;
+    margin-top: 10px;
+    text-align: center;
+    cursor:  pointer;
+
+    > svg {
+      fill: $grey-color-dark;
+      // transition: fill 0.5s ease;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   > .page-link {
@@ -129,9 +154,12 @@
     &:hover {
       background-color: $brand-color;
       color: #fff;
-      transition: color 0.5s ease;
-      transition: background 0.5s ease;
+      // transition: color 0.5s ease;
+      // transition: background 0.5s ease;
       text-decoration-line: none;
+    }
+    &:nth-child(1):hover ~ .close-icon > svg {
+      fill: #fff;
     }
   }
 }
@@ -208,10 +236,11 @@
 /**
  * Home Page
  */
-.page-content .wrapper {
+.wrapper {
   display: flex;
   align-items: center;
 }
+
 .home {
   position: relative;
   width: 100%;
@@ -246,8 +275,12 @@
  * Page content
  */
 .page-content {
+  margin-top: $header-height;
   padding: $spacing-unit 0;
   flex: 1;
+}
+.page-content.blur {
+  filter: blur(2px);
 }
 
 .page-heading {

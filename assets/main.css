@@ -223,11 +223,13 @@ table td {
  * Site header
  */
 .site-header {
-  border-top: 5px solid #424242;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 61.94px;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 999;
   display: flex;
   align-items: center;
 }
@@ -238,6 +240,7 @@ table td {
 
 .site-title {
   font-size: 26px;
+  display: none;
   font-weight: 300;
   line-height: 54px;
   letter-spacing: -1px;
@@ -284,48 +287,64 @@ table td {
     position: absolute;
     top: 9px;
     right: 15px;
-    background-color: #fdfdfd;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px;
-    text-align: right;
-    display: block;
-    float: right;
-    width: 36px;
-    height: 26px;
+    background-color: transparent;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 27px;
+    height: 27px;
     line-height: 0;
-    padding-top: 10px;
+    margin-top: 10px;
     text-align: center;
     cursor: pointer;
   }
   .site-nav .menu-icon > svg {
     fill: #424242;
-    transition: transform 0.5s ease;
-  }
-}
-@media screen and (max-width: 600px) and (min-width: 600.1px) {
-  .site-nav .menu-icon > svg {
-    transition: none;
+    width: 100%;
+    height: 100%;
   }
 }
 
 .trigger {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   position: fixed;
-  top: 66.94px;
+  top: 0;
   bottom: 0;
   left: 20vw;
   right: 0;
   width: 80%;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
   transform: translateX(100%);
-  transition: transform 0.5s ease;
+  transition: transform 0.1s ease;
 }
 @media (min-width: 600.1px) {
   .trigger {
     transition: none;
   }
+}
+.trigger > .close-icon {
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  background-color: transparent;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  line-height: 0;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.trigger > .close-icon > svg {
+  fill: #424242;
+  width: 100%;
+  height: 100%;
 }
 .trigger > .page-link {
   width: 100%;
@@ -343,9 +362,10 @@ table td {
 .trigger > .page-link:hover {
   background-color: #2a7ae2;
   color: #fff;
-  transition: color 0.5s ease;
-  transition: background 0.5s ease;
   text-decoration-line: none;
+}
+.trigger > .page-link:nth-child(1):hover ~ .close-icon > svg {
+  fill: #fff;
 }
 
 /**
@@ -417,7 +437,7 @@ table td {
 /**
  * Home Page
  */
-.page-content .wrapper {
+.wrapper {
   display: flex;
   align-items: center;
 }
@@ -460,8 +480,13 @@ table td {
  * Page content
  */
 .page-content {
+  margin-top: 61.94px;
   padding: 30px 0;
   flex: 1;
+}
+
+.page-content.blur {
+  filter: blur(2px);
 }
 
 .page-heading {
