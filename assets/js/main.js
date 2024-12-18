@@ -4,8 +4,8 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   /** Header Menu Trigger */
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  const menuIcon = document.querySelector('.menu-icon');
+  const close = document.querySelector('.close');
   const trigger = document.querySelector('.trigger');
   const menu_icon_svg = document.querySelector('.menu-icon > svg');
   const pageContent = document.querySelector('.page-content');
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     pageContent.classList.add('blur');
     opened = true;
   });
-  closeIcon.addEventListener('click', function() {
+  close.addEventListener('click', function() {
     trigger.style.transform = 'translateX(100%)';
     pageContent.classList.remove('blur');
     opened = false;
