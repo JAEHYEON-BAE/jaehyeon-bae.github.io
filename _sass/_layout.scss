@@ -99,7 +99,24 @@
     }
   }
 }
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  backdrop-filter: none;
+  transition: background-color 0.1s ease, backdrop-filter 0.1s ease;
+  @media (min-width: 600.1px) {
+    transition: none;
+  }
+}
 .trigger {
+  background-color: $background-color;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -111,6 +128,9 @@
   align-items: center;
 
   z-index: 1000;
+
+  border-radius: 20px 0px 0px 20px;
+  overflow: hidden;
 
   transform: translateX(100%);
   transition: transform 0.1s ease;
@@ -184,11 +204,6 @@
   max-height: $footer-height;
 }
 
-.footer-heading {
-  @include relative-font-size(1.125);
-  margin-bottom: $spacing-unit * 0.5;
-}
-
 .contact-list,
 .social-media-list {
   list-style: none;
@@ -215,26 +230,15 @@
 }
 
 .footer-col-2 {
-  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width:         calc(20% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width:         calc(50% - (#{$spacing-unit} / 2));
+  // position: absolute;
+  right: 0;
 }
 
 .footer-col-3 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-  .footer-col-1,
-  .footer-col-2 {
-    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-    width:         calc(50% - (#{$spacing-unit} / 2));
-  }
-
-  .footer-col-3 {
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
-  }
+  width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+  width:         calc(100% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-palm) {
@@ -251,6 +255,11 @@
 .wrapper {
   display: flex;
   align-items: center;
+}
+.home-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
 
 .home {
@@ -290,9 +299,6 @@
   margin-top: $header-height;
   padding: $spacing-unit 0;
   flex: 1;
-}
-.page-content.blur {
-  filter: blur(2px);
 }
 
 .page-heading {
