@@ -2,8 +2,6 @@
  * Site header
  */
 .site-header {
-  // border-top: 5px solid $grey-color-dark;
-  // position: relative;
   position: fixed;
   top: 0;
   left: 0;
@@ -252,25 +250,8 @@
 /**
  * Home Page
  */
-.wrapper {
-  display: flex;
-  align-items: center;
-}
-.home-wrapper {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-
-.home {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-}
-
 .image-slider {
+  display: flex;
   position: relative;
   width: 100%;
   aspect-ratio: 2.39/1;
@@ -299,6 +280,7 @@
   margin-top: $header-height;
   padding: $spacing-unit 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .page-heading {

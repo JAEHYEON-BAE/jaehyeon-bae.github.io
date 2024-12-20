@@ -453,26 +453,8 @@ table td {
 /**
  * Home Page
  */
-.wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.home-wrapper {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-
-.home {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-}
-
 .image-slider {
+  display: flex;
   position: relative;
   width: 100%;
   aspect-ratio: 2.39/1;
@@ -505,6 +487,7 @@ table td {
   margin-top: 61.94px;
   padding: 30px 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .page-heading {
