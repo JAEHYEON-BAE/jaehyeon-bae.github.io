@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-<script src="{{ '/assets/js/home.js' | relative_url }}"></script>
+
+<!-- <script src="{{ '/assets/js/home.js' | relative_url }}"></script> -->
+<img src='/assets/gifs/blurry_blue.gif' style="display: none;" alt="Preloaded GIF">
 
   {%- include head.html -%}
 
   <body>
 
-    {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
-      <div class="image-slider">
-        <img src="/assets/images/BINI.JPG" alt="BINI" class="slide">
+    <main class="home-page-content" aria-label="Content">
+      <div class="home-wrapper">
+        <!-- <img src="/assets/images/BINI.JPG" alt="BINI" class="slide">
         <img src="/assets/images/DISNEY_SEA.JPEG" alt="DISNEY_SEA" class="slide">  
-        <img src="/assets/images/EIFFEL_BRIDGE.JPEG" alt="EIFFEL_BRIDGE" class="slide">    
+        <img src="/assets/images/EIFFEL_BRIDGE.JPEG" alt="EIFFEL_BRIDGE" class="slide"> -->
+        <div class="vertical-line top"></div>
+        <div class="vertical-line bottom"></div>
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.header_pages | default: default_paths -%}
+        
+        {%- assign left_count = page_paths.size | divided_by: 2 -%}
+        {%- assign right_start = left_count | plus: 1 -%}
+        
+        {%- assign left_pages = page_paths | slice: 0, right_start -%}
+        {%- assign right_pages = page_paths | slice: right_start, page_paths.size -%}
+        <section class="home-menu left">
+          {% for left_path in left_pages %}
+          {%- assign left_page = site.pages | where: "path", left_path | first -%}
+          <a href="{{ left_page.url | relative_url }}">{{ left_page.title | escape }}</a>
+          {% endfor %}
+        </section>
+        <section class="home-menu right">
+          {% for right_path in right_pages %}
+          {%- assign right_page = site.pages | where: "path", right_path | first -%}
+          <a href="{{ right_page.url | relative_url }}">{{ right_page.title | escape }}</a>
+          {% endfor %}
+        </section>
       </div>
     </main>
 
