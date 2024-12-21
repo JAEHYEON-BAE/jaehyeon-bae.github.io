@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-<!-- <script src="{{ '/assets/js/home.js' | relative_url }}"></script> -->
 <img src='/assets/gifs/blurry_blue.gif' style="display: none;" alt="Preloaded GIF">
 
   {%- include head.html -%}
@@ -10,9 +9,6 @@
 
     <main class="home-page-content" aria-label="Content">
       <div class="home-wrapper">
-        <!-- <img src="/assets/images/BINI.JPG" alt="BINI" class="slide">
-        <img src="/assets/images/DISNEY_SEA.JPEG" alt="DISNEY_SEA" class="slide">  
-        <img src="/assets/images/EIFFEL_BRIDGE.JPEG" alt="EIFFEL_BRIDGE" class="slide"> -->
         <div class="vertical-line top"></div>
         <div class="vertical-line bottom"></div>
         {%- assign default_paths = site.pages | map: "path" -%}

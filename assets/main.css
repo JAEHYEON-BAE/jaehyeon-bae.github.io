@@ -501,11 +501,13 @@ table td {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
 }
 
 .home-menu a {
+  flex: 0 1 auto;
+  white-space: normal;
+  word-wrap: break-word;
   padding-top: 6.25vh;
   padding-bottom: 6.25vh;
   border-radius: 20px;
@@ -514,6 +516,7 @@ table td {
   font-size: 28px;
   font-weight: 600;
   text-decoration: none;
+  justify-content: center;
   opacity: 0;
   animation-delay: 0.5s;
   overflow: hidden;
