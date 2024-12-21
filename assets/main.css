@@ -478,6 +478,7 @@ table td {
   background-color: #111111;
   z-index: 3;
   animation: expand-line 1.2s cubic-bezier(0.68, 0.1, 0.27, 1) forwards;
+  animation-delay: 0.1s;
 }
 
 .vertical-line.top {
@@ -517,8 +518,8 @@ table td {
   font-weight: 600;
   text-decoration: none;
   justify-content: center;
+  border: 1px solid #fdfdfd;
   opacity: 0;
-  animation-delay: 0.5s;
   overflow: hidden;
   background-color: #fdfdfd;
   background-size: 400%;
@@ -539,8 +540,9 @@ table td {
 .home-menu.left a {
   margin-left: 20%;
   padding-right: 10%;
-  transform: translateX(2%);
+  transform: translateX(5%);
   animation: fade-in-menu-left 1s ease-in forwards;
+  animation-delay: 1s;
 }
 
 .home-menu.right {
@@ -550,14 +552,15 @@ table td {
 .home-menu.right a {
   margin-right: 20%;
   padding-left: 10%;
-  transform: translateX(-2%);
+  transform: translateX(-5%);
   animation: fade-in-menu-right 1s ease-in forwards;
+  animation-delay: 1.5s;
 }
 
 @keyframes fade-in-menu-left {
   0% {
     opacity: 0;
-    transform: translateX(2%);
+    transform: translateX(5%);
   }
   100% {
     opacity: 1;
@@ -567,7 +570,7 @@ table td {
 @keyframes fade-in-menu-right {
   0% {
     opacity: 0;
-    transform: translateX(-2%);
+    transform: translateX(-5%);
   }
   100% {
     opacity: 1;
