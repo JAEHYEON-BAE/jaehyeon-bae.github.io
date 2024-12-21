@@ -518,7 +518,7 @@ table td {
   animation-delay: 0.5s;
   overflow: hidden;
   background-color: #fdfdfd;
-  background-size: cover;
+  background-size: 200%;
   background-position: center;
   background-image: url("/assets/gifs/blurry_blue.gif");
   background-blend-mode: overlay;
