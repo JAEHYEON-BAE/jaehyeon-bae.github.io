@@ -32,7 +32,6 @@
   }
 }
 
-
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
@@ -334,7 +333,7 @@
     margin-left: 20%;
     padding-right: 10%;
     transform: translateX(5%);
-    animation: fade-in-menu-left 1s ease-in forwards;
+    animation: fade-in-menu-left 1s ease forwards;
     animation-delay: 1s;
   }
 }
@@ -345,8 +344,8 @@
     margin-right: 20%;
     padding-left: 10%;
     transform: translateX(-5%);
-    animation: fade-in-menu-right 1s ease-in forwards;
-    animation-delay: 1.5s;
+    animation: fade-in-menu-right 1s ease forwards;
+    animation-delay: 1.3s;
   }
 }
 @keyframes fade-in-menu-left {

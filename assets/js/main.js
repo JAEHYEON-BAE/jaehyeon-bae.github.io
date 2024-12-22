@@ -6,10 +6,8 @@ if (window.location.pathname!=="/") {
   
     const menuIcon = document.querySelector('.menu-icon');
     const close = document.querySelector('.close');
-    const trigger = document.querySelector('.trigger');   
-    // trigger == sidebar
+    const trigger = document.querySelector('.trigger'); /** trigger == sidebar */  
     const menu_icon_svg = document.querySelector('.menu-icon > svg');
-    // const pageContent = document.querySelector('.page-content');
     const mask = document.querySelector('.mask');
   
     /** Header Menu Trigger */
