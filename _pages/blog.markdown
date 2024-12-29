@@ -3,7 +3,7 @@ layout: page
 title: blog
 permalink: /blog/
 ---
-<ul>
+<!-- <ul>
   {% assign tag_posts = site.posts | where: "categories", "category_1" %}
   {% for post in tag_posts %}
     <li>
@@ -11,4 +11,4 @@ permalink: /blog/
       <span>{{ post.date | date: "%Y-%m-%d" }}</span>
     </li>
   {% endfor %}
-</ul>
+</ul> -->
