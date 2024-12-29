@@ -1,5 +1,15 @@
 @charset "utf-8";
 
+
+@font-face {
+  font-family: 'Ailerons Regular';
+  src: local('Ailerons Regular'), 
+       url('fonts/Ailerons-Typeface.woff') format('woff'),
+       url('fonts/Ailerons-Typeface.otf') format('otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
 // Define defaults for each variable.
 
 $base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
@@ -22,6 +32,14 @@ $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
 $table-text-align: left !default;
+
+$theme-yellow:         #D1A931 !default;
+$theme-pink-light:     #D8D1D8 !default;
+$theme-charcol-dark:   #2B414E !default;
+$theme-charcol-light:  #485C68 !default;
+$theme-white:          #EDE8F4 !default;
+$theme-brown:          #444336 !default;
+$theme-grey:           #838799 !default;
 
 // Width of the content area
 $content-width:    800px !default;

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: category_2
-permalink: /category_2/
+title: magazine
+permalink: /magazine/
 ---
 
 <h1>Menu Test</h1>

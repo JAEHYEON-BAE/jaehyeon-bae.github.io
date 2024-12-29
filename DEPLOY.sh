@@ -7,7 +7,7 @@ echo "Compiling Sass..."
 sass _sass/main.scss assets/main.css --style expanded
 
 echo "Building Jekyll site..."
-jekyll build
+bundle exec jekyll build
 
 echo "Starting Jekyll server..."
-jekyll serve --host 0.0.0.0
+bundle exec jekyll serve --host 0.0.0.0

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <!-- <link rel="preload" href="/assets/images/textures/background-texture.avif" as="background-image"> -->
 
   {%- include head.html -%}
 
@@ -8,8 +9,10 @@
     {%- include header.html -%}
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
+      <div class="page-mask">
+        <div class="wrapper">
+          {{ content }}
+        </div>
       </div>
     </main>
 

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: category_1
-permalink: /category_1/
+title: blog
+permalink: /blog/
 ---
 <ul>
   {% assign tag_posts = site.posts | where: "categories", "category_1" %}
