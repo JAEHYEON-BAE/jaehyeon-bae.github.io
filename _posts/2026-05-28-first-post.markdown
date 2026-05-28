@@ -18,7 +18,7 @@ and the inline code blocks are like `code block` .\
 how about inline math block $126 \pi $ .
 
 $$ 
-1235 \cdots \pi \sigma \\
+123+ 5^{\times} \cdots \pi \sigma \\
 G
 $$
 
