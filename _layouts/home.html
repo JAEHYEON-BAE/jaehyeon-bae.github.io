@@ -14,8 +14,8 @@
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
         
-        {%- assign left_count = page_paths.size | divided_by: 2 -%}
-        {%- assign right_start = left_count | plus: 1 -%}
+        {%- assign left_count = page_paths.size | plus: 1 | divided_by: 2 -%}
+        {%- assign right_start = left_count -%}
         
         {%- assign left_pages = page_paths | slice: 0, right_start -%}
         {%- assign right_pages = page_paths | slice: right_start, page_paths.size -%}

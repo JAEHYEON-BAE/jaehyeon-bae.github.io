@@ -1,5 +1,31 @@
-_site
-.sass-cache
-.jekyll-cache
+# Jekyll build output and caches
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-vendor
+
+# Ruby/Bundler local files
+.bundle/
+vendor/
+*.gem
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor/project-local files
+.idea/
+.vscode/
+AGENTS.md
+CLAUDE.md
+.claude/
+.mcp.json
+
+# analysis file for portfolio
+portfolio_website_content_analysis.md

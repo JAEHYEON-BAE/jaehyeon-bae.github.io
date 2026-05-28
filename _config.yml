@@ -35,7 +35,6 @@ collections:
 # Build settings
 # theme: minima
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 
 sass:
@@ -43,7 +42,12 @@ sass:
   style: expanded
   output_style: expanded
 
-
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
+  - DEPLOY.sh
+  - BUILD.sh
+  - portfolio_website_content_analysis.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
