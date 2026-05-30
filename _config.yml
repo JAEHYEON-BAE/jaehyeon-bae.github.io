@@ -28,6 +28,12 @@ permalink: /:categories/:title
 github_username:  jaehyeon-bae
 instagram_username: loae_________
 
+header_pages:
+  - _pages/about.md
+  - _pages/projects.md
+  - _pages/ongoing.md
+  - _pages/interests.md
+
 collections:
   pages:
     output: true

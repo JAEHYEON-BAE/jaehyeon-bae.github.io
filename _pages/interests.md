@@ -1,7 +1,7 @@
 ---
 layout: page
-title: magazine
-permalink: /magazine/
+title: interests
+permalink: /interests/
 ---
 
 <!-- <h1>Menu Test</h1>

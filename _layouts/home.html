@@ -1,37 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
- 
-  <!-- <link rel="preload" href="/assets/images/textures/background-texture.avif" as="background-image"> -->
+<html lang="{{ page.lang | default: site.lang | default: "ko" }}">
 
   {%- include head.html -%}
 
   <body>
 
+    {%- include header.html -%}
+
     <main class="home-page-content" aria-label="Content">
-      <div class="home-wrapper">
-        <div class="vertical-line top"></div>
-        <div class="vertical-line bottom"></div>
-        {%- assign default_paths = site.pages | map: "path" -%}
-        {%- assign page_paths = site.header_pages | default: default_paths -%}
-        
-        {%- assign left_count = page_paths.size | plus: 1 | divided_by: 2 -%}
-        {%- assign right_start = left_count -%}
-        
-        {%- assign left_pages = page_paths | slice: 0, right_start -%}
-        {%- assign right_pages = page_paths | slice: right_start, page_paths.size -%}
-        <section class="home-menu left">
-          {% for left_path in left_pages %}
-          {%- assign left_page = site.pages | where: "path", left_path | first -%}
-          <a href="{{ left_page.url | relative_url }}">{{ left_page.title | escape }}</a>
-          {% endfor %}
-        </section>
-        <section class="home-menu right">
-          {% for right_path in right_pages %}
-          {%- assign right_page = site.pages | where: "path", right_path | first -%}
-          <a href="{{ right_page.url | relative_url }}">{{ right_page.title | escape }}</a>
-          {% endfor %}
-        </section>
+      <div class="home-content-wrapper">
+        {{ content }}
       </div>
     </main>
+
   </body>
 </html>

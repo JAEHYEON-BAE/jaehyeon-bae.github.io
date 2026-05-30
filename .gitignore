@@ -19,13 +19,14 @@ vendor/
 .DS_Store
 Thumbs.db
 
-# Editor/project-local files
+# Editor/project-local/AI-agent files
 .idea/
 .vscode/
 AGENTS.md
 CLAUDE.md
 .claude/
 .mcp.json
+.playwright-mcp/
 
 # analysis file for portfolio
 portfolio_website_content_analysis.md

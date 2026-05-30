@@ -1,7 +1,7 @@
 ---
 layout: page
-title: blog
-permalink: /blog/
+title: ongoing
+permalink: /ongoing/
 ---
 <ul>
   {% for post in site.posts %}
