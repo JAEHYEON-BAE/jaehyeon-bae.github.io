@@ -20,7 +20,7 @@ dl, dd, ol, ul, figure {
 body {
   font: 400 16px/1.5 "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #111113;
-  background-color: #F5F5F7;
+  background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -198,6 +198,21 @@ pre > code {
 }
 
 /**
+ * Font size utilities (Kramdown inline attribute: {:.text-large} etc.)
+ */
+.text-large {
+  font-size: 24px;
+}
+
+.text-medium {
+  font-size: 20px;
+}
+
+.text-small {
+  font-size: 16px;
+}
+
+/**
  * Tables
  */
 table {
@@ -332,7 +347,7 @@ table td {
 }
 
 .trigger {
-  background-color: #F5F5F7;
+  background-color: #fdfdfd;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -360,7 +375,7 @@ table td {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #F5F5F7;
+  background-color: #fdfdfd;
   cursor: pointer;
 }
 .trigger > .close > .close-icon {
@@ -392,15 +407,15 @@ table td {
   justify-items: center;
   color: #111113;
   line-height: 1.5;
-  background-color: #F5F5F7;
+  background-color: #fdfdfd;
 }
 .trigger > .page-link:hover {
   background-color: #2a7ae2;
-  color: #F5F5F7;
+  color: #fdfdfd;
   text-decoration-line: none;
 }
 .trigger > .page-link:nth-child(1):hover ~ .close-icon > svg {
-  fill: #F5F5F7;
+  fill: #fdfdfd;
 }
 
 /**
@@ -475,7 +490,7 @@ table td {
   }
 }
 .home-content-wrapper {
-  padding: calc(61.94px + 80px) 2.5vw 100px 7vw;
+  padding: calc(61.94px + 80px) 18vw 100px 10vw;
   box-sizing: border-box;
 }
 .home-content-wrapper > h1 {
@@ -493,13 +508,13 @@ table td {
   letter-spacing: 0.02em;
   margin-bottom: 28px;
 }
-.home-content-wrapper > p {
+.home-content-wrapper > p:not(.text-large):not(.text-medium):not(.text-small) {
   font-size: 17px;
   line-height: 1.8;
   color: #111113;
   margin-bottom: 20px;
 }
-.home-content-wrapper > p em {
+.home-content-wrapper > p:not(.text-large):not(.text-medium):not(.text-small) em {
   font-style: italic;
 }
 .home-content-wrapper > ul {
@@ -545,7 +560,7 @@ table td {
 .home-content-wrapper > p > a:hover {
   background-color: #111113;
   border-color: #111113;
-  color: #F5F5F7;
+  color: #fdfdfd;
   text-decoration: none;
 }
 .home-content-wrapper > hr {
@@ -609,7 +624,7 @@ table td {
   height: 100%;
   flex: 1;
   overflow: hidden;
-  border: 1px solid #F5F5F7;
+  border: 1px solid #fdfdfd;
   border-radius: 20px;
   backdrop-filter: blur(4px);
   background-color: rgba(255, 255, 255, 0.4);

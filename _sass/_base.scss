@@ -231,6 +231,15 @@ pre {
 
 
 /**
+ * Font size utilities (Kramdown inline attribute: {:.text-large} etc.)
+ */
+.text-large  { font-size: 24px; }
+.text-medium { font-size: 20px; }
+.text-small  { font-size: 16px; }
+
+
+
+/**
  * Tables
  */
 table {

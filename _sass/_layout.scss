@@ -253,10 +253,9 @@
 
 // Markdown 구조: h1 → h2 → p(bio) → ul(info) → p(nav links) → hr → p(about) → p(about links)
 .home-content-wrapper {
-  padding: calc(#{$header-height} + 80px) 2.5vw 100px 7vw;
+  padding: calc(#{$header-height} + 80px) 18vw 100px 10vw;
   box-sizing: border-box;
 
-  // # 배재현 — 대형 이름
   > h1 {
     font-size: $base-font-size * 5;
     font-weight: 700;
@@ -266,7 +265,6 @@
     margin-bottom: 8px;
   }
 
-  // ## Jaehyeon Bae — 영문 이름
   > h2 {
     font-size: $base-font-size * 1.375;
     font-weight: 300;
@@ -276,7 +274,7 @@
   }
 
   // 본문 단락 (bio + about 텍스트)
-  > p {
+  > p:not(.text-large):not(.text-medium):not(.text-small) {
     font-size: $base-font-size * 1.0625;
     line-height: 1.8;
     color: $text-color;
