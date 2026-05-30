@@ -18,7 +18,7 @@
         <div class="nav-bar">
           {%- for path in page_paths -%}
           {%- if path == "/" -%}
-          <a class="nav-bar-page-link" href="{{ "/" | relative_url }}">{{ "Home" }}
+          <a class="nav-bar-page-link" href="{{ "/" | relative_url }}">{{ "home" }}
           {%- endif -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
@@ -41,7 +41,7 @@
     </div>
     {%- for path in page_paths -%}
       {%- if path == "/" -%}
-        <a class="page-link" href="{{ "/" | relative_url }}">{{ "Home" }}
+        <a class="page-link" href="{{ "/" | relative_url }}">{{ "home" }}
       {%- endif -%}
       {%- assign my_page = site.pages | where: "path", path | first -%}
       {%- if my_page.title -%}

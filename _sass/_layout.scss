@@ -51,6 +51,7 @@
     text-align: center;
     transition: color 0.5s ease;
     font-size: $base-font-size;
+    text-decoration: none;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -253,7 +254,9 @@
 
 // Markdown 구조: h1 → h2 → p(bio) → ul(info) → p(nav links) → hr → p(about) → p(about links)
 .home-content-wrapper {
-  padding: calc(#{$header-height} + 80px) 18vw 100px 10vw;
+  // 좌우 패딩을 화면 너비에 따라 가변 적용 (600px~1920px 구간에서 선형 보간)
+  // 좁을 때 4vw → 넓을 때 10vw
+  padding: calc(#{$header-height} + 80px) clamp(24px, 12.73vw - 52.36px, 192px) 100px clamp(24px, 12.73vw - 52.36px, 192px);
   box-sizing: border-box;
 
   > h1 {
@@ -271,6 +274,25 @@
     color: $grey-color;
     letter-spacing: 0.02em;
     margin-bottom: 28px;
+  }
+
+  // 글자 뒤(아래 절반)에 깔리는 메인 컬러 하이라이트
+  .text-highlight {
+    background-image: linear-gradient(to top, rgba($theme-main, 0.65) 38%, transparent 38%);
+    // 하이라이트가 글자 글리프 뒤에 깔리도록(글자가 위)
+    background-repeat: no-repeat;
+    // 좌→우로 채워지도록: 가로 폭만 0% → 100% 애니메이션
+    background-position: left center;
+    background-size: 0% 100%;
+    padding: 0 2px;
+    // 텍스트 페이드인(0.05s 지연)과 동시에 채워짐
+    // 초반·후반 모두 급격히 느린 ease-in-out (양 제어점을 1,0 쪽으로 밀어 중간만 빠름)
+    animation: highlight-fill 1.0s cubic-bezier(0.8, 0, 0.1, 1) 0.05s forwards;
+  }
+
+  @keyframes highlight-fill {
+    from { background-size: 0% 100%; }
+    to   { background-size: 100% 100%; }
   }
 
   // 본문 단락 (bio + about 텍스트)
@@ -298,11 +320,17 @@
       margin-bottom: 0;
     }
 
+    // 아이콘과 링크 사이 간격 (markdown은 공백을 무시하므로 CSS로 처리)
+    img {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
     a {
       color: $grey-color-dark;
-      text-decoration: none;
+      text-decoration: underline;
       &:visited { color: $grey-color-dark; }
-      &:hover { color: $text-color; text-decoration: underline; }
+      &:hover { color: $text-color; }
     }
   }
 
@@ -333,7 +361,7 @@
   > hr {
     border: none;
     border-top: 1px solid $grey-color-light;
-    margin: 60px 0;
+    margin: 28px 0;
   }
 
   // hr 이후 단락 — about 섹션 (색상 톤 조정)

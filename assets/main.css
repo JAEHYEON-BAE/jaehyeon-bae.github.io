@@ -18,7 +18,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: 400 16px/1.5 "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 400 16px/1.5 "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #111113;
   background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%;
@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
  */
 a {
   color: #2a7ae2;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:visited {
   color: #1756a9;
@@ -290,6 +290,7 @@ table td {
   text-align: center;
   transition: color 0.5s ease;
   font-size: 16px;
+  text-decoration: none;
 }
 .site-nav .nav-bar-page-link:not(:last-child) {
   margin-right: 5vw;
@@ -490,7 +491,7 @@ table td {
   }
 }
 .home-content-wrapper {
-  padding: calc(61.94px + 80px) 18vw 100px 10vw;
+  padding: calc(61.94px + 80px) clamp(24px, 12.73vw - 52.36px, 192px) 100px clamp(24px, 12.73vw - 52.36px, 192px);
   box-sizing: border-box;
 }
 .home-content-wrapper > h1 {
@@ -507,6 +508,22 @@ table td {
   color: #828282;
   letter-spacing: 0.02em;
   margin-bottom: 28px;
+}
+.home-content-wrapper .text-highlight {
+  background-image: linear-gradient(to top, rgba(250, 182, 185, 0.65) 38%, transparent 38%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  padding: 0 2px;
+  animation: highlight-fill 1.2s cubic-bezier(0.9, 0, 0.1, 1) 0.05s forwards;
+}
+@keyframes highlight-fill {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
 }
 .home-content-wrapper > p:not(.text-large):not(.text-medium):not(.text-small) {
   font-size: 17px;
@@ -530,16 +547,19 @@ table td {
   color: #424242;
   margin-bottom: 0;
 }
+.home-content-wrapper > ul img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
 .home-content-wrapper > ul a {
   color: #424242;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .home-content-wrapper > ul a:visited {
   color: #424242;
 }
 .home-content-wrapper > ul a:hover {
   color: #111113;
-  text-decoration: underline;
 }
 .home-content-wrapper > p > a {
   display: inline-flex;
@@ -566,7 +586,7 @@ table td {
 .home-content-wrapper > hr {
   border: none;
   border-top: 1px solid #e8e8e8;
-  margin: 60px 0;
+  margin: 28px 0;
 }
 .home-content-wrapper > hr ~ p {
   font-size: 16px;
