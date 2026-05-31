@@ -584,6 +584,24 @@ a.text-highlight:hover,
     background-size: 100% 100%;
   }
 }
+.text-block {
+  display: inline-block;
+  background-color: rgba(209, 169, 49, 0.1);
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+.text-block img {
+  vertical-align: middle;
+}
+.text-block a,
+.text-block a:visited {
+  color: #111113;
+  text-decoration: underline;
+}
+.text-block a:hover {
+  color: #D1A931;
+}
+
 .home-content-wrapper {
   padding: calc(61.94px + 80px) clamp(24px, 12.73vw - 52.36px, 192px) 100px clamp(24px, 12.73vw - 52.36px, 192px);
   box-sizing: border-box;

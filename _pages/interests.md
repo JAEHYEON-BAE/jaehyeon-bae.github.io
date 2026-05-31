@@ -1,7 +1,7 @@
 ---
 layout: page
-title: interests
-permalink: /interests/
+title: experiences
+permalink: /experiences/
 ---
 
 <!-- <h1>Menu Test</h1>

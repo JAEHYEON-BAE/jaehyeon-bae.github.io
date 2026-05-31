@@ -352,6 +352,28 @@ a.text-highlight:hover,
   to   { background-size: 100% 100%; }
 }
 
+// 텍스트를 옅은 노란색 사각형 배경으로 감싸 강조하는 블록 (전역)
+// 콘텐츠 폭에만 맞게 감싸지도록 inline-block 사용
+.text-block {
+  display: inline-block;
+  background-color: rgba($theme-yellow, 0.1);
+  border-radius: 6px;
+  padding: 8px 14px;
+  // 아이콘과 텍스트 세로 정렬
+  img {
+    vertical-align: middle;
+  }
+  // 블록 내부 링크는 본문 색 + 밑줄로 가독성 유지
+  a,
+  a:visited {
+    color: $text-color;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: $theme-yellow;
+  }
+}
+
 // Markdown 구조: h1 → h2 → p(bio) → ul(info) → p(nav links) → hr → p(about) → p(about links)
 .home-content-wrapper {
   // 좌우 패딩을 화면 너비에 따라 가변 적용 (600px~1920px 구간에서 선형 보간)
