@@ -103,15 +103,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: $brand-color;
+  color: $text-color;
   text-decoration: underline;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: $text-color;
   }
 
   &:hover {
-    color: $text-color;
+    color: $grey-color-dark;
     text-decoration: underline;
   }
 
@@ -232,10 +232,17 @@ pre {
 
 /**
  * Font size utilities (Kramdown inline attribute: {:.text-large} etc.)
+ * 모바일(≤ $on-palm)에서는 한 단계 작은 크기로 축소
  */
-.text-large  { font-size: 24px; }
+.text-large  { font-size: 26px; }
 .text-medium { font-size: 20px; }
 .text-small  { font-size: 16px; }
+
+@include media-query($on-palm) {
+  .text-large  { font-size: 22px; }
+  .text-medium { font-size: 17px; }
+  .text-small  { font-size: 14px; }
+}
 
 
 

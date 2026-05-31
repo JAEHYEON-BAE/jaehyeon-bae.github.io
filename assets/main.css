@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Ailerons Regular";
   src: local("Ailerons Regular"), url("fonts/Ailerons-Typeface.woff") format("woff"), url("fonts/Ailerons-Typeface.otf") format("otf");
@@ -91,14 +92,14 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #2a7ae2;
+  color: #111113;
   text-decoration: underline;
 }
 a:visited {
-  color: #1756a9;
+  color: #111113;
 }
 a:hover {
-  color: #111113;
+  color: #424242;
   text-decoration: underline;
 }
 .social-media-list a:hover {
@@ -199,9 +200,10 @@ pre > code {
 
 /**
  * Font size utilities (Kramdown inline attribute: {:.text-large} etc.)
+ * 모바일(≤ $on-palm)에서는 한 단계 작은 크기로 축소
  */
 .text-large {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .text-medium {
@@ -212,6 +214,17 @@ pre > code {
   font-size: 16px;
 }
 
+@media screen and (max-width: 600px) {
+  .text-large {
+    font-size: 22px;
+  }
+  .text-medium {
+    font-size: 17px;
+  }
+  .text-small {
+    font-size: 14px;
+  }
+}
 /**
  * Tables
  */
@@ -247,22 +260,46 @@ table td {
   left: 0;
   right: 0;
   height: 61.94px;
-  background-color: transparent;
+  background-color: #fdfdfd;
   z-index: 999;
   display: flex;
   align-items: center;
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -64px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #fdfdfd 18%, rgba(253, 253, 253, 0.7) 42%, rgba(253, 253, 253, 0.32) 68%, rgba(253, 253, 253, 0) 100%);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
 }
 .site-header > .wrapper {
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 600px) {
+  .site-header {
+    background-color: transparent;
+  }
+  .site-header::before {
+    display: block;
+  }
+}
 
 .page-title {
   font-size: 26px;
   display: none;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 54px;
-  letter-spacing: -1px;
+  letter-spacing: normal;
   margin-bottom: 0;
   float: left;
 }
@@ -308,7 +345,7 @@ table td {
   }
   .site-nav .menu-icon {
     position: absolute;
-    top: 9px;
+    top: 17px;
     right: 15px;
     background-color: transparent;
     display: flex;
@@ -318,7 +355,6 @@ table td {
     width: 27px;
     height: 27px;
     line-height: 0;
-    margin-top: 10px;
     text-align: center;
     cursor: pointer;
   }
@@ -336,10 +372,14 @@ table td {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
   background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(to bottom, rgba(253, 253, 253, 0) 50%, #fdfdfd 100%);
   z-index: 1000;
   backdrop-filter: none;
-  transition: background-color 0.1s ease, backdrop-filter 0.1s ease;
+  -webkit-backdrop-filter: none;
+  transition: opacity 0.45s ease;
 }
 @media (min-width: 600.1px) {
   .mask {
@@ -348,39 +388,68 @@ table td {
 }
 
 .trigger {
-  background-color: #fdfdfd;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 20vw;
+  left: auto;
   right: 0;
-  width: 80%;
-  align-items: center;
+  width: 58%;
+  align-items: stretch;
   z-index: 1000;
   border-radius: 20px 0px 0px 20px;
   overflow: hidden;
-  transform: translateX(100%);
-  transition: transform 0.1s ease;
+  pointer-events: none;
 }
-@media (min-width: 600.1px) {
-  .trigger {
-    transition: none;
-  }
+.trigger > .close,
+.trigger > .page-link {
+  opacity: 0;
+  transform: translateY(-18px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.trigger.open {
+  pointer-events: auto;
+}
+.trigger.open > .close,
+.trigger.open > .page-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+.trigger.open > :nth-child(1) {
+  transition-delay: 0.02s;
+}
+.trigger.open > :nth-child(2) {
+  transition-delay: 0.08s;
+}
+.trigger.open > :nth-child(3) {
+  transition-delay: 0.14s;
+}
+.trigger.open > :nth-child(4) {
+  transition-delay: 0.2s;
+}
+.trigger.open > :nth-child(5) {
+  transition-delay: 0.26s;
+}
+.trigger.open > :nth-child(6) {
+  transition-delay: 0.32s;
 }
 .trigger > .close {
   display: flex;
   width: 100%;
-  height: 30%;
+  height: auto;
+  padding: 18px 0;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #fdfdfd;
+  background-color: transparent;
   cursor: pointer;
 }
 .trigger > .close > .close-icon {
   position: absolute;
+  top: 17px;
   right: 15px;
   background-color: transparent;
   display: flex;
@@ -399,24 +468,25 @@ table td {
 }
 .trigger > .page-link {
   width: 100%;
-  height: 100%;
+  height: auto;
+  padding: 14px 28px;
   display: flex;
   align-content: center;
   align-items: center;
-  text-align: center;
-  justify-content: center;
-  justify-items: center;
+  text-align: left;
+  justify-content: flex-start;
+  justify-items: flex-start;
   color: #111113;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
   line-height: 1.5;
-  background-color: #fdfdfd;
+  background-color: transparent;
 }
 .trigger > .page-link:hover {
-  background-color: #2a7ae2;
-  color: #fdfdfd;
+  color: #424242;
   text-decoration-line: none;
-}
-.trigger > .page-link:nth-child(1):hover ~ .close-icon > svg {
-  fill: #fdfdfd;
 }
 
 /**
@@ -490,6 +560,30 @@ table td {
     transform: translateY(0);
   }
 }
+.text-highlight {
+  background-image: linear-gradient(to top, rgba(250, 182, 185, 0.65) 38%, transparent 38%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  padding: 0 2px;
+  animation: highlight-fill 1s cubic-bezier(0.8, 0, 0.1, 1) 0.05s forwards;
+}
+
+.text-highlight a,
+a.text-highlight,
+a.text-highlight:hover,
+.text-highlight a:hover {
+  text-decoration: none;
+}
+
+@keyframes highlight-fill {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
 .home-content-wrapper {
   padding: calc(61.94px + 80px) clamp(24px, 12.73vw - 52.36px, 192px) 100px clamp(24px, 12.73vw - 52.36px, 192px);
   box-sizing: border-box;
@@ -509,24 +603,8 @@ table td {
   letter-spacing: 0.02em;
   margin-bottom: 28px;
 }
-.home-content-wrapper .text-highlight {
-  background-image: linear-gradient(to top, rgba(250, 182, 185, 0.65) 38%, transparent 38%);
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 0% 100%;
-  padding: 0 2px;
-  animation: highlight-fill 1.2s cubic-bezier(0.9, 0, 0.1, 1) 0.05s forwards;
-}
-@keyframes highlight-fill {
-  from {
-    background-size: 0% 100%;
-  }
-  to {
-    background-size: 100% 100%;
-  }
-}
 .home-content-wrapper > p:not(.text-large):not(.text-medium):not(.text-small) {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.8;
   color: #111113;
   margin-bottom: 20px;
@@ -601,11 +679,10 @@ table td {
   margin-right: 20px;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid #e8e8e8;
   background-color: transparent;
   font-size: 14px;
   color: #111113;
-  transition: border-color 0.2s ease;
+  text-decoration: underline;
 }
 .home-content-wrapper > hr ~ p > a:visited {
   color: #111113;
@@ -613,7 +690,6 @@ table td {
 .home-content-wrapper > hr ~ p > a:hover {
   background-color: transparent;
   color: #111113;
-  border-color: #111113;
 }
 
 @media screen and (max-width: 600px) {
@@ -623,6 +699,9 @@ table td {
   .home-content-wrapper > h1 {
     font-size: 56px;
     letter-spacing: -2px;
+  }
+  .home-content-wrapper > p:not(.text-large):not(.text-medium):not(.text-small) {
+    font-size: 14px;
   }
 }
 /**
@@ -696,6 +775,14 @@ table td {
 
 .post-content {
   margin-bottom: 30px;
+}
+.post-content > p:not(.text-large):not(.text-medium):not(.text-small) {
+  font-size: 16px;
+}
+@media screen and (max-width: 600px) {
+  .post-content > p:not(.text-large):not(.text-medium):not(.text-small) {
+    font-size: 14px;
+  }
 }
 .post-content h2 {
   font-size: 32px;

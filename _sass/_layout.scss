@@ -7,21 +7,58 @@
   left: 0;
   right: 0;
   height: $header-height;
-  background-color: transparent;
+  // 데스크톱: 불투명 배경색 (블러/페이드 대신). 모바일은 아래 미디어쿼리에서 transparent 유지.
+  background-color: $background-color;
   z-index: 999;
   display: flex;
   align-items: center;
+
+  // 헤더 아래로 점점 사라지는 그라데이션 블러 + 약한 흰색 페이드 (모바일 전용)
+  // (스크롤되는 본문이 헤더 글자와 겹치지 않도록 가려줌). 헤더 글자는 그 위(.wrapper)에 유지.
+  &::before {
+    content: "";
+    position: absolute;
+    display: none;            // 데스크톱: 블러 미사용 (모바일 미디어쿼리에서 표시)
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -64px;            // 블러/페이드 영역을 더 넉넉히 확장
+    z-index: -1;              // .wrapper(글자)보다 뒤
+    pointer-events: none;
+    // 흰색 페이드: 맨 위는 완전 불투명 흰색 → 아래로 완만하게 0까지 (경계선 안 보이도록)
+    background: linear-gradient(
+      to bottom,
+      rgba($background-color, 1) 0%,
+      rgba($background-color, 1) 18%,
+      rgba($background-color, 0.7) 42%,
+      rgba($background-color, 0.32) 68%,
+      rgba($background-color, 0) 100%
+    );
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    // 블러도 위→아래로 부드럽게 사라지도록 여러 정지점 마스크
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.4) 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.4) 72%, transparent 100%);
+  }
+
   > .wrapper {
     display: flex;
     align-items: center;
+  }
+
+  // 모바일: 기존대로 투명 배경 + 그라데이션 블러/흰색 페이드 유지 (절대 변경 X)
+  @include media-query($on-palm) {
+    background-color: transparent;
+    &::before { display: block; }
   }
 }
 .page-title {
   @include relative-font-size(1.625);
   display: none;
-  font-weight: 300;
+  // 기본 폰트와 동일한 두께/자간 (가는 300 + 음수 자간이 다른 폰트처럼 보이던 문제 수정)
+  font-weight: $base-font-weight;
   line-height: $base-line-height * $base-font-size * 2.25;
-  letter-spacing: -1px;
+  letter-spacing: normal;
   margin-bottom: 0;
   float: left;
 
@@ -73,7 +110,8 @@
     
     .menu-icon {
       position: absolute;
-      top: 9px;
+      // 닫힘(햄버거)·열림(X) 아이콘이 정확히 겹치도록 동일한 top/right (헤더 세로 중앙)
+      top: 17px;
       right: $spacing-unit * 0.5;
       background-color: transparent;
       display: flex;
@@ -83,7 +121,6 @@
       width: 27px;
       height: 27px;
       line-height: 0;
-      margin-top: 10px;
       text-align: center;
       cursor:  pointer;
 
@@ -102,49 +139,85 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  // 기본 숨김: 사이드바 열 때만 JS가 visible로 전환 (닫혀 있을 때 하단 흰 띠 방지)
+  visibility: hidden;
+  // 블러·그라데이션을 함께 opacity로 페이드 인/아웃 (닫을 때 즉시 사라지기 시작)
+  opacity: 0;
   background-color: rgba(0, 0, 0, 0);
+  // 흰색 페이드: 세로 중앙(50%) 투명 → 맨 아래(100%) 완전 흰색
+  background-image: linear-gradient(to bottom, rgba($background-color, 0) 50%, rgba($background-color, 1) 100%);
   z-index: 1000;
   backdrop-filter: none;
-  transition: background-color 0.1s ease, backdrop-filter 0.1s ease;
+  -webkit-backdrop-filter: none;
+  transition: opacity 0.45s ease;
   @media (min-width: 600.1px) {
     transition: none;
   }
 }
 .trigger {
-  background-color: $background-color;
+  // 패널 완전 투명 — 흐려진 콘텐츠 위에 글자만 떠 있음
+  background-color: transparent;
   display: flex;
   flex-direction: column;
+  // 항목을 위쪽부터 순서대로 쌓기 (기존엔 height:100%로 균등 분산되어 멀리 떨어짐)
+  justify-content: flex-start;
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 20vw;
+  left: auto;
   right: 0;
-  width: 80%;
-  align-items: center;
+  width: 58%;
+  align-items: stretch;
 
   z-index: 1000;
 
   border-radius: 20px 0px 0px 20px;
   overflow: hidden;
 
-  transform: translateX(100%);
-  transition: transform 0.1s ease;
-  @media (min-width: 600.1px) {
-    transition: none;
+  // 닫힘: 항목 숨김 + 클릭 비활성 (패널은 투명이라 보이지 않음)
+  pointer-events: none;
+
+  // 각 항목: 위(-18px)에서 내려오며 페이드 — 여닫기 모두 transition으로 처리해
+  // 닫을 때도 즉시 페이드아웃되어 mask 흰색 페이드와 동시에 사라짐
+  > .close,
+  > .page-link {
+    opacity: 0;
+    transform: translateY(-18px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  
+
+  &.open {
+    pointer-events: auto;
+
+    > .close,
+    > .page-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    // 열릴 때만 스태거 지연 (닫을 때는 지연이 사라져 모두 즉시 함께 페이드아웃)
+    > :nth-child(1) { transition-delay: 0.02s; }
+    > :nth-child(2) { transition-delay: 0.08s; }
+    > :nth-child(3) { transition-delay: 0.14s; }
+    > :nth-child(4) { transition-delay: 0.20s; }
+    > :nth-child(5) { transition-delay: 0.26s; }
+    > :nth-child(6) { transition-delay: 0.32s; }
+  }
+
   > .close {
     display: flex;
     width: 100%;
-    height: 30%;
+    height: auto;
+    padding: 18px 0;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: $background-color;
+    background-color: transparent;
     cursor: pointer;
 
     > .close-icon {
       position: absolute;
+      // 햄버거(.menu-icon)와 정확히 같은 위치 (top/right/크기 동일)
+      top: 17px;
       right: $spacing-unit * 0.5;
       background-color: transparent;
       display: flex;
@@ -166,26 +239,26 @@
 
   > .page-link {
     width: 100%;
-    height: 100%;
+    height: auto;
+    padding: 14px 28px;
     display: flex;
     align-content: center;
     align-items: center;
-    text-align: center;
-    justify-content: center;
-    justify-items: center;
+    text-align: left;
+    justify-content: flex-start;
+    justify-items: flex-start;
     color: $text-color;
+    font-size: $base-font-size * 1.75;
+    font-weight: 700;
+    text-transform: uppercase;   // 모두 대문자
+    text-decoration: none;       // 밑줄 제거
     line-height: $base-line-height;
-    background-color: $background-color;
+    background-color: transparent;
 
     &:hover {
-      background-color: $brand-color;
-      color: $background-color;
-      // transition: color 0.5s ease;
-      // transition: background 0.5s ease;
+      // 푸른색 배경 제거 — 글자 색만 살짝 흐려져 피드백
+      color: $grey-color-dark;
       text-decoration-line: none;
-    }
-    &:nth-child(1):hover ~ .close-icon > svg {
-      fill: $background-color;
     }
   }
 }
@@ -252,6 +325,33 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
+// 글자 뒤(아래 절반)에 깔리는 메인 컬러 하이라이트 — 전역(홈·page 등 어디서나 적용)
+.text-highlight {
+  background-image: linear-gradient(to top, rgba($theme-main, 0.65) 38%, transparent 38%);
+  // 하이라이트가 글자 글리프 뒤에 깔리도록(글자가 위)
+  background-repeat: no-repeat;
+  // 좌→우로 채워지도록: 가로 폭만 0% → 100% 애니메이션
+  background-position: left center;
+  background-size: 0% 100%;
+  padding: 0 2px;
+  // 텍스트 페이드인(0.05s 지연)과 동시에 채워짐
+  // 초반·후반 모두 급격히 느린 ease-in-out (양 제어점을 1,0 쪽으로 밀어 중간만 빠름)
+  animation: highlight-fill 1.0s cubic-bezier(0.8, 0, 0.1, 1) 0.05s forwards;
+}
+
+// text-highlight가 적용된 요소(또는 그 안)의 하이퍼링크는 밑줄 제거
+.text-highlight a,
+a.text-highlight,
+a.text-highlight:hover,
+.text-highlight a:hover {
+  text-decoration: none;
+}
+
+@keyframes highlight-fill {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
 // Markdown 구조: h1 → h2 → p(bio) → ul(info) → p(nav links) → hr → p(about) → p(about links)
 .home-content-wrapper {
   // 좌우 패딩을 화면 너비에 따라 가변 적용 (600px~1920px 구간에서 선형 보간)
@@ -276,28 +376,9 @@
     margin-bottom: 28px;
   }
 
-  // 글자 뒤(아래 절반)에 깔리는 메인 컬러 하이라이트
-  .text-highlight {
-    background-image: linear-gradient(to top, rgba($theme-main, 0.65) 38%, transparent 38%);
-    // 하이라이트가 글자 글리프 뒤에 깔리도록(글자가 위)
-    background-repeat: no-repeat;
-    // 좌→우로 채워지도록: 가로 폭만 0% → 100% 애니메이션
-    background-position: left center;
-    background-size: 0% 100%;
-    padding: 0 2px;
-    // 텍스트 페이드인(0.05s 지연)과 동시에 채워짐
-    // 초반·후반 모두 급격히 느린 ease-in-out (양 제어점을 1,0 쪽으로 밀어 중간만 빠름)
-    animation: highlight-fill 1.0s cubic-bezier(0.8, 0, 0.1, 1) 0.05s forwards;
-  }
-
-  @keyframes highlight-fill {
-    from { background-size: 0% 100%; }
-    to   { background-size: 100% 100%; }
-  }
-
-  // 본문 단락 (bio + about 텍스트)
+  // 본문 단락 (bio + about 텍스트) — 크기 클래스 미지정 시 기본은 .text-small과 동일
   > p:not(.text-large):not(.text-medium):not(.text-small) {
-    font-size: $base-font-size * 1.0625;
+    font-size: 16px;
     line-height: 1.8;
     color: $text-color;
     margin-bottom: 20px;
@@ -373,23 +454,21 @@
     em { color: $text-color; }
   }
 
-  // hr 이후 링크 버튼 — 언더라인 스타일로 차별화
+  // hr 이후 링크 버튼 — 일반 밑줄 스타일로 차별화
   > hr ~ p > a {
     padding: 0;
     margin-right: 20px;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid $grey-color-light;
     background-color: transparent;
     font-size: $small-font-size;
     color: $text-color;
-    transition: border-color 0.2s ease;
+    text-decoration: underline;
 
     &:visited { color: $text-color; }
     &:hover {
       background-color: transparent;
       color: $text-color;
-      border-color: $text-color;
     }
   }
 }
@@ -401,6 +480,11 @@
     > h1 {
       font-size: $base-font-size * 3.5;
       letter-spacing: -2px;
+    }
+
+    // 크기 클래스 미지정 기본 문단도 .text-small과 동일하게 모바일에서 14px
+    > p:not(.text-large):not(.text-medium):not(.text-small) {
+      font-size: 14px;
     }
   }
 }
@@ -488,6 +572,16 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
+
+  // 크기 클래스 미지정 문단의 기본값은 .text-small과 동일 (데스크톱 16px / 모바일 14px)
+  > p:not(.text-large):not(.text-medium):not(.text-small) {
+    font-size: 16px;
+  }
+  @include media-query($on-palm) {
+    > p:not(.text-large):not(.text-medium):not(.text-small) {
+      font-size: 14px;
+    }
+  }
 
   h2 {
     @include relative-font-size(2);

@@ -14,38 +14,42 @@ document.addEventListener("DOMContentLoaded", function() {
   let opened = false;
 
   menuIcon.addEventListener('click', function() {
-    trigger.style.transform = 'translateX(0)';
+    trigger.classList.add('open');
     opened = true;
     mask.style.pointerEvents = 'auto';
-    mask.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-    mask.style.backdropFilter = 'blur(2px)';
+    mask.style.visibility = 'visible';
+    // 블러 적용(콘텐츠를 알아볼 수 없을 만큼) — 표시는 opacity 트랜지션으로 페이드 인
+    mask.style.backdropFilter = 'blur(18px)';
+    mask.style.webkitBackdropFilter = 'blur(18px)';
+    requestAnimationFrame(function() { mask.style.opacity = '1'; });
   });
-  close.addEventListener('click', function() {
-    trigger.style.transform = 'translateX(100%)';
+
+  function closeSidebar() {
+    trigger.classList.remove('open');
     opened = false;
     mask.style.pointerEvents = 'none';
-    mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    mask.style.backdropFilter = 'none';
-  });
-  mask.addEventListener('click', function() {
-    trigger.style.transform = 'translateX(100%)';
-    opened = false;
-    mask.style.pointerEvents = 'none';
-    mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    mask.style.backdropFilter = 'none';
-  });
+    // opacity 0으로 즉시 페이드 아웃 시작 (블러 + 흰색 그라데이션 함께 사라짐)
+    mask.style.opacity = '0';
+  }
+  close.addEventListener('click', closeSidebar);
+  mask.addEventListener('click', closeSidebar); /** 바깥(마스크) 탭으로 닫기 */
 
   /** Header Menu Trigger: interact with window width */
   const onPalm = 600;
   function triggerOnPalm() {
     if (opened && window.innerWidth > onPalm) {
-      trigger.style.transform = 'translateX(100%)';
-      opened = false;
-      mask.style.pointerEvents = 'none';
-      mask.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      mask.style.backdropFilter = 'none';
+      closeSidebar();
     }
   }
   window.addEventListener('resize', triggerOnPalm);
   triggerOnPalm();
+
+  // 페이드 아웃이 끝나면 완전히 숨기고 블러 해제 (iOS backdrop-filter 잔류 레이어 방지)
+  mask.addEventListener('transitionend', function(e) {
+    if (!opened && e.propertyName === 'opacity') {
+      mask.style.visibility = 'hidden';
+      mask.style.backdropFilter = 'none';
+      mask.style.webkitBackdropFilter = 'none';
+    }
+  });
 });
