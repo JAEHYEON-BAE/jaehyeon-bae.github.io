@@ -336,6 +336,9 @@ table td {
   color: #111113;
   text-decoration-line: none;
 }
+.site-nav .nav-bar-page-link.active {
+  color: #111113;
+}
 @media screen and (max-width: 600px) {
   .site-nav .page-title {
     display: flex;

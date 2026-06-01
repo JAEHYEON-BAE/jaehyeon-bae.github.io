@@ -13,10 +13,15 @@ permalink: /about/
 
 대학생 소프트웨어 개발자입니다.\
 \
-실제로 동작하는 프로그램을 구현하고, 오픈소스로 배포한 경험이 있습니다. 자세한 내용은 [프로젝트](/projects/)와 [github](https://github.com/JAEHYEON-BAE)에서 확인할 수 있습니다.\
+실제로 동작하는 프로그램을 구현하고, 오픈소스로 배포한 경험이 있습니다. 자세한 내용은 [프로젝트↗](/projects/)와 [github↗](https://github.com/JAEHYEON-BAE)에서 확인할 수 있습니다.\
 \
 대구경북과학기술원 기초학부 20학번으로 입학하여, 현재 컴퓨터공학 전공 과정 4학년에 재학 중입니다.
 
+<br>
+
+![Gmail](/assets/icons/gmail-minimal.svg) &nbsp;&nbsp;&nbsp;&nbsp;[2021401bjh@gmail.com](mailto:2021401bjh@gmail.com)\
+![DGIST](/assets/icons/dgist-minimal.svg) &nbsp;&nbsp;&nbsp;&nbsp;[jaehyeon3357@dgist.ac.kr](mailto:jaehyeon3357@dgist.ac.kr)\
+![GitHub](/assets/icons/github-minimal.svg) &nbsp;&nbsp;&nbsp;&nbsp;[github.com/JAEHYEON-BAE](https://github.com/JAEHYEON-BAE)
 <br>
 <br>
 
@@ -39,7 +44,7 @@ permalink: /about/
 ### **AI 코딩 에이전트와의 협업&nbsp;**{:.text-highlight}
 {:style="font-size: 22px"} 
 
-Claude Code와 Codex를 주력으로 사용합니다. 코드 생성 도구로만 활용하기보다, 개발 과정 전체에서 협업하는 동료로 활용하고 있습니다. 기획과 설계 검토, 구현, 테스트와 디버깅 전 과정에서 AI 코딩 에이전트를 적극적으로 활용하고 있습니다.\
+Claude Code와 Codex를 주력으로 사용합니다. 코드 생성 도구로만 활용하기보다, 개발 과정 전체에서 협업하는 동료처럼 다루고 있습니다. 기획과 설계 검토, 구현, 테스트와 디버깅 전 과정에 AI 코딩 에이전트를 적극적으로 포함시키고 있습니다.\
 \
 AI를 사용할 때 가장 신경 쓰는 부분은, *hallucination*이라고 불리는 왜곡 현상과 비결정론적인 판단입니다. 잘못된 행동을 최대한 방지하기 위해 AI 코딩 에이전트의 작업을 적용하기 전에 항상 직접 검토하고, 필요한 경우 수정합니다. 또한 *Hooks* 기능을 이용하여 실행 환경을 고정하고, 변경사항을 자동으로 저장하는 등 결정론적인 흐름을 구성하며 AI 코딩 에이전트를 더 안정적으로 활용하고 있습니다.
 
