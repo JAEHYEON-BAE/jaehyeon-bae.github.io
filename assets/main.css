@@ -750,6 +750,11 @@ a.text-highlight:hover,
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.page-content > .page-mask > .wrapper {
+  opacity: 0;
+  animation: home-fade-in 0.7s ease 0.05s forwards;
+}
+
 .page-heading {
   font-size: 32px;
 }

@@ -549,6 +549,12 @@ a.text-highlight:hover,
   }
 }
 
+// 콘텐츠 페이지(page/post)도 로드 시 home과 동일하게 아래→위 페이드인
+.page-content > .page-mask > .wrapper {
+  opacity: 0;
+  animation: home-fade-in 0.7s ease 0.05s forwards;
+}
+
 .page-heading {
   @include relative-font-size(2);
 }
