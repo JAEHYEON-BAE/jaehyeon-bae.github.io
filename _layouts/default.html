@@ -18,14 +18,7 @@
 
     {%- include footer.html -%}
 
-    <script>
-      document.querySelectorAll('a[href]').forEach(function(link) {
-        if (link.hostname && link.hostname !== window.location.hostname) {
-          link.setAttribute('target', '_blank');
-          link.setAttribute('rel', 'noopener noreferrer');
-        }
-      });
-    </script>
+    {%- include external-links.html -%}
 
   </body>
 
