@@ -32,7 +32,7 @@ header_pages:
   - _pages/about.md
   - _pages/projects.md
   - _pages/ongoing.md
-  - _pages/interests.md
+  - _pages/experiences.md
 
 collections:
   pages:
