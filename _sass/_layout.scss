@@ -76,6 +76,16 @@
 
   .menu-icon {
     display: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+
+    &:focus-visible {
+      outline: 2px solid $brand-color;
+      outline-offset: 3px;
+    }
   }
   
   .nav-bar {
@@ -216,6 +226,19 @@
     text-align: center;
     background-color: transparent;
     cursor: pointer;
+    border: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+
+    &:focus-visible {
+      outline: none;
+
+      > .close-icon {
+        outline: 2px solid $brand-color;
+        outline-offset: 3px;
+      }
+    }
 
     > .close-icon {
       position: absolute;

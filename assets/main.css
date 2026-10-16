@@ -316,6 +316,15 @@ table td {
 }
 .site-nav .menu-icon {
   display: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+.site-nav .menu-icon:focus-visible {
+  outline: 2px solid #2a7ae2;
+  outline-offset: 3px;
 }
 .site-nav .nav-bar {
   display: flex;
@@ -449,6 +458,17 @@ table td {
   text-align: center;
   background-color: transparent;
   cursor: pointer;
+  border: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+.trigger > .close:focus-visible {
+  outline: none;
+}
+.trigger > .close:focus-visible > .close-icon {
+  outline: 2px solid #2a7ae2;
+  outline-offset: 3px;
 }
 .trigger > .close > .close-icon {
   position: absolute;
